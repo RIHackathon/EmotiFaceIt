@@ -11,7 +11,7 @@ import android.widget.GridView;
  * Created by R^2 on 12/3/2016.
  */
 
-public class EmotiWarehouse extends AppCompatActivity {
+public class EmotiWarehouseActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
