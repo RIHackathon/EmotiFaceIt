@@ -1,5 +1,7 @@
 package com.rsquared.robert.emotifaceit;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,13 +15,19 @@ import android.widget.GridView;
 
 public class EmotiWarehouseActivity extends AppCompatActivity {
 
+    private Bitmap bmBitmap;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emoti_warehouse);
-        GridView gridView = (GridView) findViewById(R.id.emoti_grid_view);
-        gridView.setAdapter(new ImageAdapter(this));
 
+        byte[] bytes = getIntent().getByteArrayExtra("bitmapbytes");
+        Bitmap bmBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        this.bmBitmap = bmBitmap;
+
+        GridView gridView = (GridView) findViewById(R.id.emoti_grid_view);
+        gridView.setAdapter(new ImageAdapter(this, bmBitmap));
     }
 
     @Override
