@@ -33,6 +33,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TestListView"
+            android:screenOrientation="portrait"
+            android:label="Emoti Warehouse">
+
+            <intent-filter>
+                <action android:name="android.intent.action.TESTLISTVIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

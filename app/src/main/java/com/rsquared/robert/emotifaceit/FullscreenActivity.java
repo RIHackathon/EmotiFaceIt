@@ -23,9 +23,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 
 
@@ -87,32 +89,53 @@ public class FullscreenActivity extends AppCompatActivity{
         imgClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.exit(0);
+//                System.exit(0);
+                createListView();
+
             }
         });
+
+
+
     }
 
     private void createListView() {
-        final ListView listView = (ListView) findViewById(R.id.emoti_list_view);
+//        final ListView listView = (ListView) findViewById(R.id.emoti_list_view);
         //Resources res = getResources();
         //Drawable drawable = res.getDrawable(R.drawable.smile);
+
+        ListView simpleList;
+        ArrayList<Item> mimojis =new ArrayList<>();
+
+        simpleList = (ListView) findViewById(R.id.emoti_list_view);
+        mimojis.add(new Item("Lion",R.drawable.smile));
+        mimojis.add(new Item("Tiger",R.drawable.sleepy));
+        mimojis.add(new Item("Monkey",R.drawable.dizzy));
+        mimojis.add(new Item("Elephant",R.drawable.smirk));
+        mimojis.add(new Item("Dog",R.drawable.angry));
+        mimojis.add(new Item("Cat",R.drawable.drooling));
+        mimojis.add(new Item("Cat",R.drawable.crying_face));
+
+        ListViewAdapter myAdapter=new ListViewAdapter(this,R.layout.test_listview,mimojis);
+        simpleList.setAdapter(myAdapter);
 
         Drawable myIcon = getResources().getDrawable( R.drawable.smile);
 
 
-        ArrayAdapter<Drawable> stringArrayAdapter = new ArrayAdapter<Drawable>(this, android.R.layout.simple_list_item_1);
-        listView.setAdapter(stringArrayAdapter);
+//        ArrayAdapter<Drawable> stringArrayAdapter = new ArrayAdapter<Drawable>(this, android.R.layout.simple_list_item_1);
+        simpleList.setAdapter(myAdapter);
 //        showAlert();
-        stringArrayAdapter.add(myIcon);
+//        myAdapter.add(myIcon);
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    
 
+                ImageView imageView = (ImageView) view;
+                imageView.setAlpha((float) 0.7);
 
             }
         };
-        listView.setOnItemClickListener(onItemClickListener);
+        simpleList.setOnItemClickListener(onItemClickListener);
     }
 
     public static void saveToPreferences(Context context, String key, Boolean allowed) {
