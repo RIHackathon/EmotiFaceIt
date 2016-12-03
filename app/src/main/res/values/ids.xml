@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fullscreen_content_controls" type="id">Full screen content controls</item>
+    <item name="fullscreen_content" type="id">full screen content</item>
+    <item name="dummy_button" type="id">Dont need</item>
+</resources>
