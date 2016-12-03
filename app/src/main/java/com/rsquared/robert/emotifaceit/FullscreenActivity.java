@@ -7,7 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +18,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 
 import java.io.ByteArrayOutputStream;
 
@@ -58,7 +66,33 @@ public class FullscreenActivity extends AppCompatActivity{
             openCamera();
         }
 
+        createListView();
+
     }
+
+    private void createListView() {
+        final ListView listView = (ListView) findViewById(R.id.emoti_list_view);
+        //Resources res = getResources();
+        //Drawable drawable = res.getDrawable(R.drawable.smile);
+
+        Drawable myIcon = getResources().getDrawable( R.drawable.smile);
+
+
+        ArrayAdapter<Drawable> stringArrayAdapter = new ArrayAdapter<Drawable>(this, android.R.layout.simple_list_item_1);
+        listView.setAdapter(stringArrayAdapter);
+        showAlert();
+        stringArrayAdapter.add(myIcon);
+        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    
+
+
+            }
+        };
+        listView.setOnItemClickListener(onItemClickListener);
+    }
+
     public static void saveToPreferences(Context context, String key, Boolean allowed) {
         SharedPreferences myPrefs = context.getSharedPreferences(CAMERA_PREF,
                 Context.MODE_PRIVATE);
