@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -15,14 +16,19 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.ByteArrayOutputStream;
+
+import static android.R.attr.bitmap;
 
 
 public class FullscreenActivity extends AppCompatActivity{
 
 
-    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
-    public static final String ALLOW_KEY = "ALLOWED";
-    public static final String CAMERA_PREF = "camera_pref";
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
+    private static final String ALLOW_KEY = "ALLOWED";
+    private static final String CAMERA_PREF = "camera_pref";
+    private static final int REQUEST_TAKE_PHOTO = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,7 +180,26 @@ public class FullscreenActivity extends AppCompatActivity{
 
     private void openCamera() {
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        startActivity(intent);
+        startActivityForResult(intent,  REQUEST_TAKE_PHOTO);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            mImageVie.setImageBitmap(imageBitmap);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] bytes = stream.toByteArray();
+
+            Intent intent = new Intent("android.intent.action.EMOTIWAREHOUSE");
+            intent.putExtra("bitmapbytes",bytes);
+            startActivity(intent);
+        }
+
     }
 }
 
