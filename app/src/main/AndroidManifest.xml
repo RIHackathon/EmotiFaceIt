@@ -23,6 +23,17 @@
                 <uses-feature android:name="android.hardware.camera" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EmotiWarehouse"
+            android:screenOrientation="portrait"
+            android:label="Emoti Warehouse">z
+
+            <intent-filter>
+                <action android:name="android.intent.action.EMOTIWAREHOUSE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

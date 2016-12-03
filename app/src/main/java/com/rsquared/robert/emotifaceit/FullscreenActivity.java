@@ -2,6 +2,7 @@ package com.rsquared.robert.emotifaceit;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -114,6 +115,15 @@ public class FullscreenActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 System.exit(0);
+            }
+        });
+
+        ImageButton imageButton = (ImageButton) findViewById(R.id.imgClose);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent("android.intent.action.EMOTIWAREHOUSE"));
             }
         });
 

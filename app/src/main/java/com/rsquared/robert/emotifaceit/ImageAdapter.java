@@ -20,7 +20,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return mThumbIds.length;
     }
 
     @Override
@@ -34,15 +34,29 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
         ImageView imageView = new ImageView(context);
-        imageView.setImageResource(R.drawable.ic_bus_stop_big_medium_small_turk);
-        imageView.setImageResource(R.drawable.ic_bus_stop_big_medium_small_turk);
-        imageView.setImageResource(R.drawable.ic_bus_stop_big_medium_small_turk);
-        imageView.setImageResource(R.drawable.ic_bus_stop_big_medium_small_turk);
-        imageView.setImageResource(R.drawable.ic_bus_stop_big_medium_small_turk);
-        imageView.setImageResource(R.drawable.ic_bus_stop_big_medium_small_turk);
-        imageView.setImageResource(R.drawable.ic_bus_stop_big_medium_small_turk);
-        return null;
+        imageView.setImageResource(mThumbIds[position]);
+        return imageView;
     }
+
+    private Integer[] mThumbIds ={
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk,
+            R.drawable.ic_bus_stop_big_medium_small_turk
+
+    };
 }
