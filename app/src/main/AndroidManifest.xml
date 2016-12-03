@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rsquared.robert.emotifaceit">
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera2" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,19 +15,18 @@
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
 
-                <!--This is to add the camera permission-->
-                <uses-permission android:name="android.permission.CAMERA" />
-                <uses-feature android:name="android.hardware.camera" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".EmotiWarehouse"
             android:screenOrientation="portrait"
-            android:label="Emoti Warehouse">z
+            android:label="Emoti Warehouse">
 
             <intent-filter>
                 <action android:name="android.intent.action.EMOTIWAREHOUSE" />
