@@ -25,6 +25,8 @@
 
         </activity>
         <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/FullscreenTheme"
             android:name=".EmotiWarehouseActivity"
             android:screenOrientation="portrait"
             android:label="Emoti Warehouse">

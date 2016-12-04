@@ -22,12 +22,12 @@ public class EmotiWarehouseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emoti_warehouse);
 
-        byte[] bytes = getIntent().getByteArrayExtra("bitmapbytes");
-        Bitmap bmBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        this.bmBitmap = bmBitmap;
+//        byte[] bytes = getIntent().getByteArrayExtra("bitmapbytes");
+//        Bitmap bmBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//        this.bmBitmap = bmBitmap;
 
         GridView gridView = (GridView) findViewById(R.id.emoti_grid_view);
-        gridView.setAdapter(new ImageAdapter(this, bmBitmap));
+        gridView.setAdapter(new ImageAdapter(this));
     }
 
     @Override

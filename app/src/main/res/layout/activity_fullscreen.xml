@@ -10,51 +10,51 @@
     tools:context=".FullscreenActivity"
     android:id="@+id/camera_relative_layout">
 
+        <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="70dp"
+            android:id="@+id/button3" />
 
+        <TextView
+            android:text="TextView"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titlePage" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2" />
 
         <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="match_parent"
             tools:context=".MainActivity"
-            android:id="@+id/camera_frame_layout"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true">
+            android:id="@+id/camera_frame_layout">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView2" />
-
-                <FrameLayout
+                <SurfaceView
                     android:id="@+id/camera_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
-                </FrameLayout>
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imgClose"
-                    android:layout_gravity="right|top"
-                    android:background="@android:drawable/ic_menu_close_clear_cancel"
-                    android:padding="20dp"/>
-
-
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="75dp"
-                    app:srcCompat="@android:drawable/ic_menu_camera"
-                    android:id="@+id/sutter_button"
-                    android:layout_gravity="bottom|center_horizontal" />
+                </SurfaceView>
 
         </FrameLayout>
+
         <ListView
-            android:layout_width="92dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/emoti_list_view"
+            android:layout_marginRight="198dp"
+            android:layout_marginEnd="198dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:id="@+id/emoti_list_view" />
 </RelativeLayout>

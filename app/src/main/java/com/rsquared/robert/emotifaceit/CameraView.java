@@ -1,25 +1,33 @@
 package com.rsquared.robert.emotifaceit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.io.IOException;
+
 
 /**
  * Created by Stevens on 12/3/2016.
  */
 
 public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
+    private final Context context;
     private SurfaceHolder mHolder;
     private Camera mCamera;
+    //private Camera.PreviewCallback preview;
 
-    public CameraView(Context context, Camera camera){
+    public CameraView(Context context, final Camera camera){
         super(context);
 
-        mCamera = camera;
+        this.context = context;
+         mCamera = camera;
         mCamera.setDisplayOrientation(90);
         //get the holder and set this class as the callback, so we can get camera data here
         mHolder = getHolder();
@@ -29,9 +37,18 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         try{
+
             //when the surface is created, we can set the camera to draw images in this surfaceholder
             mCamera.setPreviewDisplay(surfaceHolder);
             mCamera.startPreview();
+            mCamera.setOneShotPreviewCallback(new Camera.PreviewCallback() {
+                @Override
+                public void onPreviewFrame(byte[] bytes, Camera camera) {
+
+                    Intent intent = new Intent("android.intent.action.EMOTIWAREHOUSE");
+                    context.startActivity(intent);
+                }
+            });
         } catch (IOException e) {
             Log.d("ERROR", "Camera error on surfaceCreated " + e.getMessage());
         }
@@ -65,6 +82,28 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
         mCamera.stopPreview();
         mCamera.release();
     }
+
+    Camera.ShutterCallback shutterCallback = new Camera.ShutterCallback() {
+        public void onShutter() {
+            //			 Log.d(TAG, "onShutter'd");
+        }
+    };
+
+    Camera.PictureCallback rawCallback = new Camera.PictureCallback() {
+        public void onPictureTaken(byte[] data, Camera camera) {
+
+
+            //			 Log.d(TAG, "onPictureTaken - raw");
+        }
+    };
+
+    Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
+        public void onPictureTaken(byte[] data, Camera camera) {
+/*            new SaveImageTask().execute(data);
+            resetCam();
+            Log.d(TAG, "onPictureTaken - jpeg");*/
+        }
+    };
 //    @Override
 //    public void takePicture(Camera.ShutterCallback shutter){
 //
