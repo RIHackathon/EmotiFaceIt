@@ -48,5 +48,11 @@
                     android:layout_alignParentEnd="true"
                     android:id="@+id/emoti_list_view" />
 
+                <Button
+                    android:text="This the new api"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_api" />
+
         </FrameLayout>
 </RelativeLayout>

@@ -3,7 +3,6 @@ package com.rsquared.robert.emotifaceit;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -17,18 +16,17 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-
+import android.hardware.camera2.CameraCaptureSession;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -50,6 +48,15 @@ public class FullscreenActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
+
+        Button button = (Button) findViewById(R.id.button_api);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("android.intent.action.ANDROIDCAMERAAPI");
+                startActivity(intent);
+            }
+        });
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (getFromPref(this, ALLOW_KEY)) {
@@ -77,15 +84,15 @@ public class FullscreenActivity extends AppCompatActivity{
         createListView();
 
         try{
-            mCamera = Camera.open(1);//you can use open(int) to use different cameras
+//            mCamera = Camera.open(1);//you can use open(int) to use different cameras
         } catch (Exception e){
             Log.d("ERROR", "Failed to get camera: " + e.getMessage());
         }
 
         if(mCamera != null) {
-            mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
-            FrameLayout camera_view = (FrameLayout)findViewById(R.id.camera_view);
-            camera_view.addView(mCameraView);//add the SurfaceView to the layout
+//            mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
+//            FrameLayout camera_view = (FrameLayout)findViewById(R.id.camera_view);
+//            camera_view.addView(mCameraView);//add the SurfaceView to the layout
         }
 
         //btn to close the application
@@ -261,10 +268,10 @@ public class FullscreenActivity extends AppCompatActivity{
         context.startActivity(i);
     }
 
-//    private void openCamera() {
-//        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-//        startActivityForResult(intent,  REQUEST_TAKE_PHOTO);
-//    }
+    private void openCamera() {
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivityForResult(intent,  REQUEST_TAKE_PHOTO);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
