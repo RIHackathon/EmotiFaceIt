@@ -7,7 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+//import android.graphics.Camera;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.net.Uri;
@@ -29,6 +32,7 @@ import android.widget.ListView;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import static android.R.attr.bitmap;
 
 
 public class FullscreenActivity extends AppCompatActivity{
