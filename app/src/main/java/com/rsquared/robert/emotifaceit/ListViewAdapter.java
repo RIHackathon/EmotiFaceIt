@@ -1,6 +1,7 @@
 package com.rsquared.robert.emotifaceit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,18 @@ import java.util.HashMap;
 import android.content.Context;
 import android.media.Image;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 public class ListViewAdapter extends ArrayAdapter<Item> {
+
+    private Context context;
 
     ArrayList<Item> emoticons = new ArrayList<>();
 
     public ListViewAdapter(Context context, int textViewResourceId, ArrayList<Item> objects) {
         super(context, textViewResourceId, objects);
         emoticons = objects;
+        this.context= context;
     }
 
     @Override
@@ -28,7 +33,7 @@ public class ListViewAdapter extends ArrayAdapter<Item> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -37,7 +42,17 @@ public class ListViewAdapter extends ArrayAdapter<Item> {
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView2);
 //        textView.setText(emoticons.get(position).getName());
         imageView.setImageResource(emoticons.get(position).getEmoticonImage());
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("android.intent.action.EMOTIWAREHOUSE");
+                context.startActivity(intent);
+                Toast.makeText(context, "The list view is clickable. Clicked item number: " + position, Toast.LENGTH_LONG).show();
+            }
+        });
+
         return v;
+
 
     }
 

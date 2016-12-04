@@ -121,13 +121,17 @@ public class FullscreenActivity extends AppCompatActivity{
         ArrayList<Item> mimojis =new ArrayList<>();
 
         simpleList = (ListView) findViewById(R.id.emoti_list_view);
-        mimojis.add(new Item("Lion",R.drawable.smile));
-        mimojis.add(new Item("Tiger",R.drawable.sleepy));
-        mimojis.add(new Item("Monkey",R.drawable.dizzy));
-        mimojis.add(new Item("Elephant",R.drawable.smirk));
-        mimojis.add(new Item("Dog",R.drawable.angry));
-        mimojis.add(new Item("Cat",R.drawable.drooling));
-        mimojis.add(new Item("Cat",R.drawable.crying_face));
+        mimojis.add(new Item("Smile",R.drawable.smile));
+        mimojis.add(new Item("Sleepy",R.drawable.sleepy));
+        mimojis.add(new Item("Dizzy",R.drawable.dizzy));
+        mimojis.add(new Item("Smirk",R.drawable.smirk));
+        mimojis.add(new Item("Angry",R.drawable.angry));
+        mimojis.add(new Item("Drooling",R.drawable.drooling));
+        mimojis.add(new Item("Crying",R.drawable.crying_face));
+        mimojis.add(new Item("Contemplative",R.drawable.contemplative));
+        mimojis.add(new Item("Hearts",R.drawable.smiling_face_with_hearts));
+        mimojis.add(new Item("Zipper mouth",R.drawable.zipper_mouth));
+        mimojis.add(new Item("Rolling eyes",R.drawable.rolling_eyes));
 
         ListViewAdapter myAdapter=new ListViewAdapter(this,R.layout.test_listview,mimojis);
         simpleList.setAdapter(myAdapter);
@@ -144,7 +148,7 @@ public class FullscreenActivity extends AppCompatActivity{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 ImageView imageView = (ImageView) view;
-                imageView.setAlpha((float) 0.7);
+                imageView.setImageAlpha(100);
 
             }
         };
