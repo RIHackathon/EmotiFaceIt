@@ -49,14 +49,14 @@ public class FullscreenActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
 
-        Button button = (Button) findViewById(R.id.button_api);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent("android.intent.action.ANDROIDCAMERAAPI");
-                startActivity(intent);
-            }
-        });
+//        Button button = (Button) findViewById(R.id.button_api);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent("android.intent.action.ANDROIDCAMERAAPI");
+//                startActivity(intent);
+//            }
+//        });
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (getFromPref(this, ALLOW_KEY)) {
@@ -84,15 +84,15 @@ public class FullscreenActivity extends AppCompatActivity{
         createListView();
 
         try{
-//            mCamera = Camera.open(1);//you can use open(int) to use different cameras
+            mCamera = Camera.open(1);//you can use open(int) to use different cameras
         } catch (Exception e){
             Log.d("ERROR", "Failed to get camera: " + e.getMessage());
         }
 
         if(mCamera != null) {
-//            mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
-//            FrameLayout camera_view = (FrameLayout)findViewById(R.id.camera_view);
-//            camera_view.addView(mCameraView);//add the SurfaceView to the layout
+            mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
+            FrameLayout camera_view = (FrameLayout)findViewById(R.id.camera_view);
+            camera_view.addView(mCameraView);//add the SurfaceView to the layout
         }
 
         //btn to close the application
@@ -100,11 +100,13 @@ public class FullscreenActivity extends AppCompatActivity{
         imgClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                System.exit(0);
+                System.exit(0);
                 createListView();
 
             }
+
         });
+
 
 
 

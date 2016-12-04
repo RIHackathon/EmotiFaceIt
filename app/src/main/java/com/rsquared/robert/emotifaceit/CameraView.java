@@ -66,6 +66,10 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
         mCamera.release();
     }
 //    @Override
+//    public void takePicture(Camera.ShutterCallback shutter){
+//
+//    }
+//    @Override
 //    public void surfaceCreated(SurfaceHolder surfaceHolder) {
 //
 //    }
