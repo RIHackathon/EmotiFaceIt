@@ -22,6 +22,8 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -60,6 +62,7 @@ public class FullscreenActivity extends AppCompatActivity implements SurfaceHold
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
+        createListView();
 
         Button button = (Button) findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +98,7 @@ public class FullscreenActivity extends AppCompatActivity implements SurfaceHold
            // openCamera();
         }
 
-        createListView();
+
         surfaceView = (SurfaceView)findViewById(R.id.camera_view);
         surfaceHolder = surfaceView.getHolder();
         surfaceHolder.addCallback(this);
@@ -223,7 +226,7 @@ public class FullscreenActivity extends AppCompatActivity implements SurfaceHold
         simpleList.setAdapter(myAdapter);
 //        showAlert();
 //        myAdapter.add(myIcon);
-        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+/*        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -231,8 +234,8 @@ public class FullscreenActivity extends AppCompatActivity implements SurfaceHold
                 imageView.setImageAlpha(100);
 
             }
-        };
-        simpleList.setOnItemClickListener(onItemClickListener);
+        };*/
+//        simpleList.setOnItemClickListener(onItemClickListener);
     }
 
     public static void saveToPreferences(Context context, String key, Boolean allowed) {

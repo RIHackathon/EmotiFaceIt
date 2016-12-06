@@ -22,6 +22,7 @@ public class EmotiWarehouseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emoti_warehouse);
 
+
 //        byte[] bytes = getIntent().getByteArrayExtra("bitmapbytes");
 //        Bitmap bmBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 //        this.bmBitmap = bmBitmap;
